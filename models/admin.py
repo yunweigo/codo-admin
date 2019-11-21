@@ -67,6 +67,15 @@ class Roles(Base):
     status = Column('status', String(5), default='0')
     ctime = Column('ctime', DateTime(), default=datetime.now, onupdate=datetime.now)
 
+class Group(Base):
+    __tablename__ = "mg_group"
+
+    # 部门表
+    dep_id = Column('dep_id', Integer, primary_key=True, autoincrement=True)
+    dep_name =  Column('dep_name', String(30))
+    status = Column("status", String(5), default='0')
+    ctime = Column('ctime', DateTime(), default=datetime.now, onupdate=datetime.now)
+
 
 class UserRoles(Base):
     __tablename__ = 'mg_user_roles'
@@ -79,6 +88,17 @@ class UserRoles(Base):
     utime = Column('utime', DateTime(), default=datetime.now, onupdate=datetime.now)
     ctime = Column('ctime', DateTime(), default=datetime.now)
 
+class GroupRole(Base):
+
+    __tablename__ = "mg_group_roles"
+
+    #用户组关系表
+    group_role_id = Column('user_group_id',Integer, primary_key=True, autoincrement=True)
+    role_id = Column('user_id', String(11))
+    group_id = Column('group_id', String(11))
+    status = Column('status', String(5), default='0')
+    utime = Column('utime', DateTime(), default=datetime.now, onupdate=datetime.now)
+    ctime = Column('ctime', DateTime(), default=datetime.now)
 
 class Components(Base):
     __tablename__ = 'mg_components'
